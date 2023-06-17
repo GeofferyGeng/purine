@@ -8,7 +8,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			height: 100vh;
+			min-height: 100vh;
 			background-color: #f2f2f2;
 		}
 
@@ -40,6 +40,7 @@
 			border-radius: 5px;
 			background-color: #f2f2f2;
 			color: #333;
+			white-space: pre;
 		}
 	</style>
 </head>
@@ -63,16 +64,16 @@
 		var input = document.querySelector("input[type='text']");
 		var result = document.querySelector(".result");
 		
-		function gettext(k,v)
+		function getText(k,v)
 		{
 			if (parseFloat(v)>150){
-				return k + " : " + v + " mg/100g, 不建议食用！\n";
+				return k + " : " + v + " mg/100g, 不建议食用！\r\n";
 			}
 			else if(parseFloat(v)>50){
-				return k + " : " + v + " mg/100g, 建议少量食用！\n";
+				return k + " : " + v + " mg/100g, 建议少量食用！\r\n";
 			}
 			else{
-				return k + " : " + v + " mg/100g, 建议食用！\n";
+				return k + " : " + v + " mg/100g, 建议食用！\r\n";
 			}
 		}
 
@@ -82,16 +83,18 @@
 			var query = input.value.trim();
 			var rtn = "";
 			
-			
-
-			if (query in dict) {
-			    var rq = dict[query];
-				result.textContent = gettext(query, rq);
-				input.value = '';
-				
-			} else {
-				result.textContent = "没有找到相关内容。\n";
-				input.value = '';
+			for (const [key, value] of Object.entries(dict)) {
+				if (key.indexOf(query) != -1)
+				{
+					rtn  += getText(key,value);
+				}
+			}
+			console.log(rtn);
+			if(rtn != ""){
+				result.textContent = rtn;
+			}
+			else{
+				result.textContent = "没有找到相关内容。\r\n";
 			}
 		});
 	</script>
