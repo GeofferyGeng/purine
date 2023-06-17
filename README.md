@@ -4,7 +4,6 @@ This is a simple web for search purine radio in the food.
 
 查询生活中的各个食物的嘌呤含量。
 
-----
 ## 参考文献
 1.Khanna D,Fitzgerald JD,Khanna PP,t al. 2012 American College of Rheumatology guidelines for management of gout.Part1: systematic nonpharmacologic and pharmacologic therapeutic approaches to hyperuricemia [J]. Arthritis Care Res(Hoboken),2012,64（10）:1431-1446.
 
